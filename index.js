@@ -1,4 +1,9 @@
-
+const rest = new (require('rest-mssql-nodejs'))({
+    user: 'unicornio',
+    password: 'Chapi01$',
+    server: 'advew.database.windows.net', // replace this with your IP Server
+    database: 'productionAW' 
+});
 console.log("Bienvenido, que desea?")
 
 console.log("1)Determinar el total de las ventas de los productos de la categoría que se provea como argumento de entrada en la consulta, para cada uno de los territorios registrados en la base de datos o para cada una de las regiones (atributo group de SalesTerritory) según se especifique como argumento de entrada.")
@@ -26,3 +31,30 @@ seleccion.addListener("data", (data) => {
     console.log("Usted selecciono: " + data.toString());
     process.exit();
 })
+
+switch(seleccion)[
+    case 1:
+        
+        break;
+    case 2:
+        break;    
+    case 3:
+        break;
+    case 4:
+        break;
+    case 5:
+        break;
+    case 6:
+        break;
+    case 7:
+        break;    
+    case 8:
+        break;
+    case 9:
+        break;
+    case 10:
+        break;   
+    default:
+        console.log("esta opcion no existe")
+        break;
+    ]
