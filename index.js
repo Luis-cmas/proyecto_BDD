@@ -1,7 +1,7 @@
 const rest = new (require('rest-mssql-nodejs'))({
     user: 'unicornio',
     password: 'Chapi01$',
-    server: 'advew.database.windows.net', // replace this with your IP Server
+    server: 'advew.database.windows.net', //direccion del servidor en azure
     database: 'productionAW' 
 });
 console.log("Bienvenido, que desea?")
@@ -26,35 +26,35 @@ console.log("9)Determinar para un rango de fechas establecidas como argumento de
 
 console.log("10)Determinar los 5 productos menos vendidos en un rango de fecha establecido como argumento de entrada.")
 
-const seleccion = process.openStdin('elija una opcion');
+const seleccion = process.openStdin('Elija una opcion'); //Opcion de la consulta donde se le pide al usuario que ingrese el numero deseado
 seleccion.addListener("data", (data) => {
-    console.log("Usted selecciono: " + data.toString());
+    console.log("Usted seleccionó: " + data.toString());//Mensaje para saber que numero eligio 
     process.exit();
 })
 
-switch(seleccion)[
-    case 1:
+switch(seleccion){
+    case 1: //Primer consulta a)
         
         break;
-    case 2:
+    case 2: //Consulta inciso b)
         break;    
-    case 3:
+    case 3: //consulta inciso c)
         break;
-    case 4:
+    case 4://consulta inciso d)
         break;
-    case 5:
+    case 5://consulta de inciso e)
         break;
-    case 6:
+    case 6://consulta inciso f
         break;
-    case 7:
+    case 7://consulta inciso g)
         break;    
-    case 8:
+    case 8://consulta inciso h)
         break;
-    case 9:
+    case 9://consulta inciso i)
         break;
-    case 10:
+    case 10://consulta inciso j)
         break;   
     default:
-        console.log("esta opcion no existe")
+        console.log("Esta opcion no existe")
         break;
-    ]
+}
