@@ -32,29 +32,69 @@ seleccion.addListener("data", (data) => {
     process.exit();
 })
 
-switch(seleccion)[
+switch(seleccion){
     case 1:
-        
+
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_A")
+            console.log(res)
+        },1500)
         break;
     case 2:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_B")
+            console.log(res)
+        },1500)
         break;    
     case 3:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_C")
+            console.log(res)
+        },1500)
         break;
     case 4:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_D")
+            console.log(res)
+        },1500)
         break;
     case 5:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_E")
+            console.log(res)
+        },1500)
         break;
     case 6:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_F")
+            console.log(res)
+        },1500)
         break;
     case 7:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_G")
+            console.log(res)
+        },1500)
         break;    
     case 8:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_H")
+            console.log(res)
+        },1500)
         break;
     case 9:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_I")
+            console.log(res)
+        },1500)
         break;
     case 10:
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_J")
+            console.log(res)
+        },1500)
         break;   
     default:
         console.log("esta opcion no existe")
         break;
-    ]
+}
