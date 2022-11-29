@@ -1,7 +1,7 @@
 const rest = new (require('rest-mssql-nodejs'))({
     user: 'unicornio',
     password: 'Chapi01$',
-    server: 'advew.database.windows.net', // replace this with your IP Server
+    server: 'advew.database.windows.net', //direccion del servidor en azure
     database: 'productionAW' 
 });
 const rest2 = new (require('rest-mssql-nodejs'))({
@@ -38,12 +38,12 @@ console.log("9)Determinar para un rango de fechas establecidas como argumento de
 
 console.log("10)Determinar los 5 productos menos vendidos en un rango de fecha establecido como argumento de entrada.")
 
-const seleccion = process.openStdin('elija una opcion');
+const seleccion = process.openStdin('Elija una opcion'); //Opcion de la consulta donde se le pide al usuario que ingrese el numero deseado
 seleccion.addListener("data", (data) => {
-    console.log("Usted selecciono: " + data.toString());
+    console.log("Usted seleccionó: " + data.toString());//Mensaje para saber que numero eligio 
     process.exit();
 })
-
+       
 switch(seleccion){
     case 1:
 
@@ -56,6 +56,7 @@ switch(seleccion){
 })
             
         break;
+<<<<<<< HEAD
     case 2:
 
         
@@ -129,8 +130,47 @@ switch(seleccion){
             const res10 = await rest.executeStoredProcedure("sp_consulta_J")
             console.log(res10)
         
+=======
+    case 2: //Consulta inciso b)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_B")
+            console.log(res)
+        },1500)
+        break;    
+    case 3: //consulta inciso c)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_C")
+            console.log(res)
+        },1500)
+        break;
+    case 4://consulta inciso d)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_D")
+            console.log(res)
+        },1500)
+        break;
+    case 5://consulta de inciso e)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_E")
+            console.log(res)
+        },1500)
+        break;
+    case 6://consulta inciso f
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_F")
+            console.log(res)
+        },1500)
+        break;
+    case 7:
+        break;    
+    case 8:
+        break;
+    case 9:
+        break;
+    case 10:
+>>>>>>> 470a7a53721537d46ef4d7a3c55fd2ee82e84b45
         break;   
     default:
-        console.log("esta opcion no existe")
+        console.log("Esta opcion no existe")
         break;
 }
