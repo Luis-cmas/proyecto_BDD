@@ -31,28 +31,52 @@ seleccion.addListener("data", (data) => {
     console.log("Usted seleccionó: " + data.toString());//Mensaje para saber que numero eligio 
     process.exit();
 })
-
+       
 switch(seleccion){
-    case 1: //Primer consulta a)
-        
+    case 1:
+
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_A")
+            console.log(res)
+        },1500)
         break;
     case 2: //Consulta inciso b)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_B")
+            console.log(res)
+        },1500)
         break;    
     case 3: //consulta inciso c)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_C")
+            console.log(res)
+        },1500)
         break;
     case 4://consulta inciso d)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_D")
+            console.log(res)
+        },1500)
         break;
     case 5://consulta de inciso e)
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_E")
+            console.log(res)
+        },1500)
         break;
     case 6://consulta inciso f
+        setTimeout(async() =>{
+            const res = await rest.storedProcedure("sp_consulta_F")
+            console.log(res)
+        },1500)
         break;
-    case 7://consulta inciso g)
+    case 7:
         break;    
-    case 8://consulta inciso h)
+    case 8:
         break;
-    case 9://consulta inciso i)
+    case 9:
         break;
-    case 10://consulta inciso j)
+    case 10:
         break;   
     default:
         console.log("Esta opcion no existe")
