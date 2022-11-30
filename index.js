@@ -46,20 +46,16 @@ seleccion.addListener("data", (data) => {
        
 switch(seleccion){
     case 1:
-
-        
-        const categoria = process.openStdin('ingrese la categoria del producto ');
-    categoria.addListener("data", async (data) => {
+        const categoria = process.openStdin('Ingrese la categoria del producto ');
+        categoria.addListener("data", async (data) => {
         const res1 = await rest2.executeStoredProcedure('sp_consulta_A',{cat: categoria})
         console.log(res1)
-    process.exit();
-})
+        process.exit();
+        })
             
         break;
     case 2:
-
-        
-            const res2 = await rest.executeStoredProcedure("sp_consulta_B")
+            const res2 = await rest.executeStoredProcedure("sp_consulta_B")//aqui inicia la consulta B
             console.log(res2)
         
         break;    
