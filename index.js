@@ -52,28 +52,35 @@ switch(seleccion){
         console.log(res1)
         process.exit();
         })
-            
         break;
-    case 2:
-            const res2 = await rest.executeStoredProcedure("sp_consulta_B")//aqui inicia la consulta B
+
+    case 2: //aqui inicia la consulta B y se le pide al usuario los datos que se quieren obtener
+            const prod = process.openStdin('Ingrese el producto mas solicitado que quiera obtener')
+            prod.addListener("data", async(data) => {
+            process.exit();
+            })
+            const region = process.openStdin('Ingrese el territorio que quiera obtener')
+            region.addListener("data", async(data) =>{
+            process.exit();
+            })
+            const res2 = await rest.executeStoredProcedure("sp_consulta_B")
             console.log(res2)
-        
-        break;    
-    case 3:
+        break;  
+
+    case 3://Consulta C, se le pide al usuario dos valores, uno la categoria y otro la localidad del producto para poder ver el stock disponible
         const categoria2= process.openStdin('elija una opcion');
         categoria2.addListener("data", (data) => {
-            
             process.exit();
         })
         const localidad = process.openStdin('elija una opcion');
         localidad.addListener("data", (data) => {
             process.exit();
         })
-            const res3 = await rest.executeStoredProcedure("sp_consulta_C",{cat: categoria2,
-                loc: localidad})
+            const res3 = await rest.executeStoredProcedure("sp_consulta_C",{cat: categoria2,loc: localidad})
             console.log(res3)
                 break;
-    case 4:
+
+    case 4: //Consulta D ver los clientes que existen en un territorio 
         const territorio = process.openStdin('elija el territorio');
         territorio.addListener("data", (data) => {
             process.exit();
@@ -82,7 +89,7 @@ switch(seleccion){
             console.log(res4)
         
         break;
-    case 5:
+    case 5://consulta E, actualiza la cantidad de productos 
         const cantidad = process.openStdin('elija el territorio');
         cantidad.addListener("data", (data) => {
             process.exit();
@@ -96,32 +103,57 @@ switch(seleccion){
             console.log(res5)
         
         break;
-    case 6:
-        
-            const res6 = await rest.executeStoredProcedure("sp_consulta_F")
+    case 6: //consulta F actualiza el metodo de envio de una orden 
+            const envio = process.openStdin('Ingrese el nuevo metodo de envio')
+            envio.addListener("data", (data) =>{
+                procces.exit();
+            })
+            const orden2 = process.openStdin('Ingrese el numero de orden')
+            orden2.addListener("data", (data) =>{
+                process.exit();
+            })
+            const res6 = await rest.executeStoredProcedure("sp_consulta_F", {envio:envio, Order:orden2})
             console.log(res6)
         
         break;
-    case 7:
-        
-            const res7 = await rest.executeStoredProcedure("sp_consulta_G")
+    case 7://consulta G actualiza el correo de un cliente
+            const fname = process.openStdin('Ingrese su nombre')
+            fname.addListener("data", (data) =>{
+                process.exit();
+            })
+            const lname = process.openStdin('Ingrese su apellido')
+            lname.addListener("data", (data) =>{
+                process.exit();
+            })
+            const correo = process.openStdin('Ingrese el correo nuevo')
+            correo.addListener("data", (data)=>{
+                process.exit();
+            })
+            const res7 = await rest.executeStoredProcedure("sp_consulta_G", {fName:fname, lName:lname, correo:correo})
             console.log(res7)
         
         break;    
-    case 8:
-        
+    case 8://consulta H ver el empleado que mas atendio 
             const res8 = await rest.executeStoredProcedure("sp_consulta_H")
             console.log(res8)
         
         break;
-    case 9:
-        
-            const res9 = await rest.executeStoredProcedure("sp_consulta_I")
+    case 9://consulta i ver el total de ventas de un rango establecido 
+            
+            const fecha = process.openStdin('Fecha de entrada')
+            fecha.addListener("data", (data)=>{
+                process.exit();
+            })        
+            const fecha2 = process.openStdin('Fecha de salida')
+            fecha2.addListener("data", (data)=>{
+                procces.exit();
+            })
+            const res9 = await rest.executeStoredProcedure("sp_consulta_I", {fechaEntrada:fecha, fechaSalida:fecha2})
             console.log(res9)
         
         break;
     case 10:
-        
+            
             const res10 = await rest.executeStoredProcedure("sp_consulta_J")
             console.log(res10)
         
