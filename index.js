@@ -66,23 +66,40 @@ console.log("8)Determinar el empleado que atendió más ordenes por territorio/r
 console.log("9)Determinar para un rango de fechas establecidas como argumento de entrada,cual es el total de las ventas en cada una de las regiones.")
 
 console.log("10)Determinar los 5 productos menos vendidos en un rango de fecha establecido como argumento de entrada.")
-/*
-const seleccion = process.openStdin('Elija una opcion'); //Opcion de la consulta donde se le pide al usuario que ingrese el numero deseado
+console.log("elija una opcion:")
+
+
+
+const seleccion = process.openStdin(); //Opcion de la consulta donde se le pide al usuario que ingrese el numero deseado
 seleccion.addListener("data", (data) => {
     console.log("Usted seleccionó: " + data.toString());//Mensaje para saber que numero eligio 
-    process.exit();
-})
-       
-switch(seleccion){
-    case 1:
-        const categoria = process.openStdin('Ingrese la categoria del producto ');
-        categoria.addListener("data", async (data) => {
-        const res1 = await rest2.executeStoredProcedure('sp_consulta_A',{cat: categoria})
-        console.log(res1)
-        process.exit();
-        })
-        break;
 
+switch(data){
+    case "1":
+        console.log("opcion 1")
+        console.log("Ingrese la categoria del producto:")
+        
+        const categoria = process.openStdin();
+        categoria.addListener("data",  (data) => {
+            sql.connect(config).then(pool => {
+    
+                // Stored procedure
+                
+                return pool.request()
+                    .input('cat', sql.NVarChar, categoria)
+                    .execute('sp_consulta_A')
+            }).then(result => {
+                console.dir(result)
+            }).catch(err => {
+                // ... error checks
+                console.error(err);
+            })
+            /* const res1 = await rest2.executeStoredProcedure('sp_consulta_A',{cat: categoria})
+        console.log(res1)*/
+        process.exit();
+        })//error aqui
+        break;
+/*
     case 2: //aqui inicia la consulta B y se le pide al usuario los datos que se quieren obtener
             const prod = process.openStdin('Ingrese el producto mas solicitado que quiera obtener')
             prod.addListener("data", async(data) => {
@@ -186,8 +203,11 @@ switch(seleccion){
             const res10 = await rest.executeStoredProcedure("sp_consulta_J")
             console.log(res10)
         
-        break;   
-    default:
+        break;   */
+  /*  default:
         console.log("Esta opcion no existe")
+        console.log(seleccion.toString)
         break;
-}*/
+}
+    process.exit();
+})*/
