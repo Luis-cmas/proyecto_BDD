@@ -1,9 +1,36 @@
-const rest = new (require('rest-mssql-nodejs'))({
+const sql = require('mssql')
+//import sql from 'mssql'
+const dbsettings = {
+    user: 'unicornio',
+    password: 'Chapi01$',
+    server: 'advew.database.windows.net', //direccion del servidor en azure
+    database: 'productionAW', 
+    options:{
+        encrypt: true,
+        trustServerCertificate: true
+    }
+    
+    
+}
+
+async function getconnection(){
+    try{
+        const pool = await sql.connect(dbsettings);
+        return pool;
+    
+    }catch(error){
+        console.error(error);
+    }
+    
+}
+getconnection();
+/*const rest = new (require('mssql'))({
     user: 'unicornio',
     password: 'Chapi01$',
     server: 'advew.database.windows.net', //direccion del servidor en azure
     database: 'productionAW' 
-});
+    
+});*//*
 const rest2 = new (require('rest-mssql-nodejs'))({
     user: 'unicornio',
     password: 'Chapi01$',
@@ -15,7 +42,9 @@ const rest3 = new (require('rest-mssql-nodejs'))({
     password: 'Chapi01$',
     server: 'advew.database.windows.net', // replace this with your IP Server
     database: 'otrosAW' 
-});
+});*/
+
+
 console.log("Bienvenido, que desea?")
 
 console.log("1)Determinar el total de las ventas de los productos de la categoría que se provea como argumento de entrada en la consulta, para cada uno de los territorios registrados en la base de datos o para cada una de las regiones (atributo group de SalesTerritory) según se especifique como argumento de entrada.")
@@ -37,7 +66,7 @@ console.log("8)Determinar el empleado que atendió más ordenes por territorio/r
 console.log("9)Determinar para un rango de fechas establecidas como argumento de entrada,cual es el total de las ventas en cada una de las regiones.")
 
 console.log("10)Determinar los 5 productos menos vendidos en un rango de fecha establecido como argumento de entrada.")
-
+/*
 const seleccion = process.openStdin('Elija una opcion'); //Opcion de la consulta donde se le pide al usuario que ingrese el numero deseado
 seleccion.addListener("data", (data) => {
     console.log("Usted seleccionó: " + data.toString());//Mensaje para saber que numero eligio 
@@ -161,4 +190,4 @@ switch(seleccion){
     default:
         console.log("Esta opcion no existe")
         break;
-}
+}*/
